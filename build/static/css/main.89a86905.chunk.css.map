@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/Lists.css","webpack://src/App.css"],"names":[],"mappings":"AAAA,oBACI,eACJ,CCFA,MACI,eACJ","file":"main.89a86905.chunk.css","sourcesContent":[".mainTableRow:hover{\n    background: #eee;\n}",".main{\n    margin-top: 15px;\n}"]}
