@@ -4,9 +4,11 @@
         "es2021": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "airbnb-typescript"
+        "airbnb-typescript",
+        "airbnb/hooks",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -22,5 +24,24 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/jsx-filename-extension": 0,
+        "react/jsx-props-no-spreading": 0,
+        "import/no-named-default": 0,
+        "import/no-named-as-default": 0,
+        "import/prefer-default-export": 0,
+        "import/extensions": 0,
+        "import/no-extraneous-dependencies": 0,
+        "@typescript-eslint/ban-ts-ignore": 0,
+        "@typescript-eslint/no-unused-vars": 0,
+        "jsx-a11y/accessible-emoji": 0,
+        "no-param-reassign" : 0,
+        "react/react-in-jsx-scope": 0,
+        "react/prefer-stateless-function": 0,
+        "no-unused-vars": 1,
+        "prefer-const": 1,
+        "no-trailing-spaces": 1,
+        "@typescript-eslint/semi": 1,
+        "@typescript-eslint/indent": 1,
+        "@typescript-eslint/object-curly-spacing": 1
     }
 }
