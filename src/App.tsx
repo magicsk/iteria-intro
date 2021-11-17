@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import {
   Link,
   Route, Routes,
@@ -11,7 +10,8 @@ import {
 import { Home } from 'grommet-icons';
 import { ApolloProvider } from '@apollo/client';
 import client from './ApolloClient/client';
-import { ListOfCustomers, ListOfOrders } from './Lists';
+import { ListOfOrders } from './ListOfOrders';
+import { ListOfCustomers } from './ListOfCustomers';
 import './App.css';
 import { AppHeader } from './AppHeader';
 
@@ -28,31 +28,29 @@ const theme = {
   },
 };
 
-class App extends Component {
-  render(): JSX.Element {
-    return (
-      <Grommet theme={theme} full>
-        <ApolloProvider client={client}>
-          <ResponsiveContext.Consumer>
-            {() => (
-              <Box fill>
-                <AppHeader
-                  appName="Customer's sheet"
-                  appIcon={<Link to="/"><Home /></Link>}
-                />
-                <Box flex margin={{ horizontal: 'large' }} overflow={{ horizontal: 'hidden' }} align="center" justify="start" className="main">
-                  <Routes>
-                    <Route path="/" element={<ListOfCustomers />} />
-                    <Route path="orders" element={<ListOfOrders />} />
-                  </Routes>
-                </Box>
+const App = (): JSX.Element => {
+  return (
+    <Grommet theme={theme} full>
+      <ApolloProvider client={client}>
+        <ResponsiveContext.Consumer>
+          {() => (
+            <Box fill>
+              <AppHeader
+                appName="Customer's sheet"
+                appIcon={<Link to="/"><Home /></Link>}
+              />
+              <Box flex margin={{ horizontal: 'large' }} overflow={{ horizontal: 'hidden' }} align="center" justify="start" className="main">
+                <Routes>
+                  <Route path="/" element={<ListOfCustomers />} />
+                  <Route path="orders" element={<ListOfOrders />} />
+                </Routes>
               </Box>
-            )}
-          </ResponsiveContext.Consumer>
-        </ApolloProvider>
-      </Grommet >
-    );
-  }
-}
+            </Box>
+          )}
+        </ResponsiveContext.Consumer>
+      </ApolloProvider>
+    </Grommet >
+  );
+};
 
 export default App;
