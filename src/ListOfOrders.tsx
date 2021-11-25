@@ -9,6 +9,7 @@ import { User } from 'grommet-icons';
 import { ORDER_LIST } from './ApolloClient/queries';
 import { CustomersList } from './models/CustomersList';
 import { getFormattedDate } from './util/getFormattedDate';
+import { getColumnString } from './util/getColumnString';
 
 const vipEl = (con: boolean) => {
   if (con) {
@@ -31,6 +32,10 @@ export function ListOfOrders(): React.ReactElement {
 
   const client = data.client_list[0];
   const clientDyn = data.client_list[0].orders_aggregate.aggregate;
+  const columns = Object.keys(data.client_list[0].orders[0]);
+  columns.pop();
+  columns.shift();
+
   return (
     <Box gap="medium" alignSelf="stretch" justify="between">
       <Card direction="row" margin="small" background="light-1">
@@ -62,18 +67,11 @@ export function ListOfOrders(): React.ReactElement {
       <Table className="mainTable" alignSelf="stretch">
         <TableHeader>
           <TableRow>
-            <TableCell scope="col" border="bottom">
-              ID
+          {columns.map(column => (
+            <TableCell key={column} scope="col" border="bottom">
+              {getColumnString(column)}
             </TableCell>
-            <TableCell scope="col" border="bottom">
-              Date of order
-            </TableCell>
-            <TableCell scope="col" border="bottom">
-              Price
-            </TableCell>
-            <TableCell scope="col" border="bottom">
-              Products
-            </TableCell>
+          ))}
           </TableRow>
         </TableHeader>
         <TableBody>

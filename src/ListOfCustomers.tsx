@@ -8,6 +8,7 @@ import './Lists.css';
 import { CLIENT_LIST } from './ApolloClient/queries';
 import { CustomersList } from './models/CustomersList';
 import { getFormattedDate } from './util/getFormattedDate';
+import { getColumnString } from './util/getColumnString';
 
 export function ListOfCustomers(): React.ReactElement {
   const navigate = useNavigate();
@@ -21,26 +22,19 @@ export function ListOfCustomers(): React.ReactElement {
     return <Text>{error}</Text>;
   }
 
+  const columns = Object.keys(data.client_list[0]);
+  columns.pop();
+
   return (
     <Table className="mainTable" alignSelf="stretch">
-      {console.log(data)}
+      {console.log(columns)}
       <TableHeader>
         <TableRow>
-          <TableCell scope="col" border="bottom">
-            Client ID
-          </TableCell>
-          <TableCell scope="col" border="bottom">
-            Customer
-          </TableCell>
-          <TableCell scope="col" border="bottom">
-            Date of birth
-          </TableCell>
-          <TableCell scope="col" border="bottom">
-            Vip
-          </TableCell>
-          <TableCell scope="col" border="bottom">
-            Sum of orders
-          </TableCell>
+          {columns.map(column => (
+            <TableCell key={column} scope="col" border="bottom">
+              {getColumnString(column)}
+            </TableCell>
+          ))}
         </TableRow>
       </TableHeader>
       <TableBody>
