@@ -10,12 +10,8 @@ import { ORDER_LIST } from './ApolloClient/queries';
 import { CustomersList } from './models/CustomersList';
 import { getFormattedDate } from './util/getFormattedDate';
 import { getColumnString } from './util/getColumnString';
+import { vipEl } from './vipEl';
 
-const vipEl = (con: boolean) => {
-  if (con) {
-    return <Text style={{ fontWeight: 'bold' }}> VIP </Text>;
-  }
-};
 
 export function ListOfOrders(): React.ReactElement {
   const paramValue = new URLSearchParams(window.location.search).get('id');
